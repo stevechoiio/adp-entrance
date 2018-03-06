@@ -1,14 +1,14 @@
 ## Evaluation Criteria
 
 #### General Requirements
-- Project has been uploaded to the user's github repository
-- Project contains more than a single commit
-- Commit messages are well formatted
+- The project has been uploaded to the user's github repository
+- The project contains more than a single commit
+- The project's commit messages are well formatted
 - The project has instalation and start-up instructions
 
 #### Development Requirements
-- Project uses (ES6) modern JavaScript syntax
-- Code is modularized and structured in a logical fashion
+- The project uses (ES6) modern JavaScript syntax
+- The project's code is modularized and structured in a logical fashion
 - The project can be cloned from github and started wihtout errors
 
 
