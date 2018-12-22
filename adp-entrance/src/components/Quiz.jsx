@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Options from "./Options";
-
+import { ProgressBar } from "react-bootstrap";
 const QUIZ = require("../quiz.json");
 
 class Quiz extends Component {
@@ -13,7 +13,7 @@ class Quiz extends Component {
     console.log("quiz is:", quiz["title"]);
     return (
       <div>
-        {quiz["title"]}
+        <h1>{quiz["title"]}</h1>
         <Options
           currentScore={this.props.currentScore}
           scoreHandler={this.props.scoreHandler}

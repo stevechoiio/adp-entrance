@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Start from "./components/Start";
 import Quiz from "./components/Quiz";
 import Result from "./components/Result";
-
+import { Well } from "react-bootstrap";
 // json data
 const quiz = require("./quiz.json");
 
@@ -25,28 +25,49 @@ class App extends Component {
   scoreHandler = () => {
     this.setState({ currentScore: this.state.currentScore + 1 });
   };
+  tryAgain = () => {
+    this.setState({ viewResult: false, quizNumber: false });
+  };
   render() {
     console.log(this.state);
     return (
       <div>
-        {/* render selection then when the user selects a quiz, it renders the quiz */}
+        <div style={{ textAlign: "center" }}>
+          <Well
+            style={{
+              maxWidth: "50%",
+              height: 600,
 
-        {!this.state.quizNumber ? (
-          <Start
-            quiz={quiz}
-            quizNumber={this.state.quizNumber}
-            quizHandler={this.quizHandler}
-          />
-        ) : this.state.viewResult ? (
-          <Result currentScore={this.state.currentScore} />
-        ) : (
-          <Quiz
-            done={this.viewHandler}
-            quizNumber={this.state.quizNumber.key}
-            scoreHandler={this.scoreHandler}
-            currentScore={this.state.currentScore}
-          />
-        )}
+              alignContent: "center",
+              textAlign: "center",
+              marginLeft: "auto",
+              marginRight: "auto",
+              marginTop: 100
+            }}
+          >
+            {/* render selection then when the user selects a quiz, it renders the quiz */}
+
+            {!this.state.quizNumber ? (
+              <Start
+                quiz={quiz}
+                quizNumber={this.state.quizNumber}
+                quizHandler={this.quizHandler}
+              />
+            ) : this.state.viewResult ? (
+              <Result
+                currentScore={this.state.currentScore}
+                back={this.tryAgain}
+              />
+            ) : (
+              <Quiz
+                done={this.viewHandler}
+                quizNumber={this.state.quizNumber.key}
+                scoreHandler={this.scoreHandler}
+                currentScore={this.state.currentScore}
+              />
+            )}
+          </Well>
+        </div>
       </div>
     );
   }

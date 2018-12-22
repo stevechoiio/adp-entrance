@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Option from "./Option";
+import { ProgressBar } from "react-bootstrap";
+
 class Options extends Component {
   state = { questionPage: 0 };
   questionPageHandler = () => {
@@ -11,10 +13,13 @@ class Options extends Component {
     console.log("clicked!!");
   };
   render() {
+    let now = 100 * ((this.state.questionPage + 1) / 4);
     return (
       <div>
-        <h1>Your current score is:{this.props.currentScore}</h1>
-        {console.log("your current score is:", this.props.currentScore)}
+        <h3 style={{ marginBottom: 50 }}>
+          {this.props.quiz["questions"][this.state.questionPage]["question"]}
+        </h3>
+
         {this.props.quiz["questions"][this.state.questionPage]["answers"].map(
           (option, index) => {
             return (
@@ -29,6 +34,16 @@ class Options extends Component {
             );
           }
         )}
+        <ProgressBar
+          style={{
+            maxWidth: "500px",
+            marginTop: 50,
+            marginLeft: "auto",
+            marginRight: "auto"
+          }}
+          now={now}
+        />
+        <h5>Your current score is:{this.props.currentScore}</h5>
       </div>
     );
   }

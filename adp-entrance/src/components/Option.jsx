@@ -11,7 +11,8 @@ class Option extends Component {
   stateRefresh = () => {
     this.setState({ color: "default" });
   };
-  clickHandler = () => {
+  clickHandler = e => {
+    e.preventDefault();
     if (this.props.answer) {
       this.setState({ color: "success" });
       this.props.scoreHandler();
@@ -24,7 +25,16 @@ class Option extends Component {
   render() {
     return (
       <div>
-        <Button bsStyle={this.state.color} onClick={this.clickHandler}>
+        <Button
+          style={{
+            minWidth: 300,
+
+            padding: "10px",
+            margin: "5px"
+          }}
+          bsStyle={this.state.color}
+          onClick={this.clickHandler}
+        >
           {this.props.children}
         </Button>
       </div>
